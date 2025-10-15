@@ -1,0 +1,112 @@
+/* .item-modal__wrapper .modal {
+    position: fixed;
+    background-color: #0000004D;
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+
+}
+
+.item-modal__wrapper .modal_opened {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal content (image version) */
+/* .item-modal__wrapper .modal__content_type_image {
+  position: relative;
+  max-width: min(820px, 92vw);
+  max-height: 88vh;
+  padding: 0;
+  border: none;
+  border-radius: 18px;
+  background: transparent;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+} */
+
+/* Large image */
+/* .item-modal__wrapper .modal__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 498px;
+  height: auto;
+  max-height: 610px;
+  object-fit: contain;
+} */
+
+/* Floating white info box */
+/* .item-modal__wrapper .modal__footer {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 112px;
+  margin: 0;
+  transform: translateX(-50%);
+  width: 498px;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.item-modal__wrapper .modal__caption {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.item-modal__wrapper .modal__weather {
+  margin: 0;
+  font-size: 15px;
+  color: #3a3a3a;
+} */
+
+/* Close button */
+/* .item-modal__wrapper .modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition: transform 0.15s ease, background 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.item-modal__wrapper .modal__close:hover {
+  background: #fff;
+  transform: scale(1.05);
+}
+
+.item-modal__wrapper .close__button {
+  width: 16px;
+  height: 16px;
+} */
+
+/* Responsive tweaks */
+/* @media (max-width: 520px) {
+  .item-modal__wrapper .modal__content_type_image {
+    max-width: 94vw;
+    border-radius: 14px;
+  }
+  .item-modal__wrapper .modal__footer {
+    width: 92%;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+  .item-modal__wrapper .modal__caption {
+    font-size: 16px;
+  }
+  .item-modal__wrapper .modal__weather {
+    font-size: 14px;
+  }
+} */ 

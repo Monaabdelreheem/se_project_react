@@ -7,7 +7,7 @@ function Footer() {
       <p className="footer__author">
         Developed by Mona Abdelreheem 
         </p>
-        <span className="footer__year" >2022</span>
+        <span className="footer__year" >2025</span>
         </div>
     </footer>
   );

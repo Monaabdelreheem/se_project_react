@@ -14,6 +14,7 @@
 
 .modal_opened {
     visibility: visible;
+    display: flex;
 }
 .modal__content {
     max-width: 496px;
@@ -67,6 +68,7 @@
     box-sizing: border-box;
 }
 
+
 .modal__radio-buttons {
     border: none;
     padding: 0;
@@ -80,6 +82,10 @@
     font-weight: 700;
     font-style: bold;
 }
+
+/* .modal__radio-buttons:checked {
+    color: #000000;
+} */
 
 .modal__legend {
     color: #000000;

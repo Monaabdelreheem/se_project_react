@@ -1,5 +1,5 @@
 import "./ItemModal.css";
-import closebtn from "../../assets/closebtn.png";
+import itemclosebtn from "../../assets/itemclosebtn.png";
 
 function ItemModal({ activeModal, onClose, card }) {
 return (
@@ -10,7 +10,7 @@ return (
             onClick={onClose} 
             type="button" 
             className="modal__close">
-                <img className="close__button" src={closebtn} />
+                <img className="close__button" src={itemclosebtn} alt="Item close button" />
             </button>
             <img src={card.link} alt="" className="modal__image" />
             <div className="modal__footer">

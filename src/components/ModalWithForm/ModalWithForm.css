@@ -83,10 +83,6 @@
     font-style: bold;
 }
 
-/* .modal__radio-buttons:checked {
-    color: #000000;
-} */
-
 .modal__legend {
     color: #000000;
     margin-bottom: 12px;
@@ -94,7 +90,7 @@
 }
 
 .modal__submit {
-    background-color:#0000004D;
+    background-color: #000000;
     color: #FFFFFF;
     font-size: 16px;
     line-height: 20px;
@@ -106,4 +102,8 @@
     margin-top: 32px;
     margin-right: auto;
 
+}
+
+.modal__label:has(.modal__radio_input:checked) {
+  color: #000000;
 }

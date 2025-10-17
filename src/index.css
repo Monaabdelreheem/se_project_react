@@ -1,1 +1,9 @@
 @import url("./vendor/normalize.css");
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap');
+
+
+body {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 700;
+}
+

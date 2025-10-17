@@ -2,8 +2,7 @@ import "./WeatherCard.css";
 import { weatherOptions } from "../../utils/constants";
 
 function WeatherCard({ weatherData }) {
-  console.log(weatherData);
-
+  
   const filteredOptions = weatherOptions.filter((option) => {
     // normalize OpenWeather condition values so they match constants
     const cond = String(weatherData.condition || "").toLowerCase();

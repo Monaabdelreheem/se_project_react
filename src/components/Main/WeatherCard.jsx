@@ -2,7 +2,6 @@ import "./WeatherCard.css";
 import { weatherOptions } from "../../utils/constants";
 
 function WeatherCard({ weatherData }) {
-  
   const filteredOptions = weatherOptions.filter((option) => {
     // normalize OpenWeather condition values so they match constants
     const cond = String(weatherData.condition || "").toLowerCase();
@@ -28,9 +27,9 @@ function WeatherCard({ weatherData }) {
       {weatherOption && (
         <img
           src={weatherOption.url}
-          alt={`Card showing ${
-            weatherOption.day ? "day" : "night"
-          }time ${weatherOption.condition} weather`}
+          alt={`Card showing ${weatherOption.day ? "day" : "night"}time ${
+            weatherOption.condition
+          } weather`}
           className="weather-card__image"
         />
       )}

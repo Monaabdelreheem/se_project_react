@@ -1,7 +1,15 @@
 import "./ModalWithForm.css";
 import closebtn from "../../assets/closebtn.png";
 
-function ModalWithForm({ children, buttonText, title, isOpen, onClose }) {
+function ModalWithForm({ 
+  children, 
+  buttonText, 
+  name,
+  title, 
+  isOpen, 
+  onClose,
+  onSubmit,
+ }) {
   const handleOverlayClick = (e) => {
     if (e.currentTarget === e.target) onClose();
   };
@@ -16,7 +24,7 @@ function ModalWithForm({ children, buttonText, title, isOpen, onClose }) {
         <button onClick={onClose} type="button" className="modal__close">
           <img className="close__button" src={closebtn} alt="Close modal" />
         </button>
-        <form className="modal__form">
+        <form className="modal__form" onSubmit={onSubmit} name={name}>
           {children}
           <button type="submit" className="modal__submit">
             {buttonText}

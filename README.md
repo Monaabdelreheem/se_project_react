@@ -21,10 +21,28 @@ You can see and try the app here 👉 [Weather Wardrobe Live](https://monaabdelr
 
 ---
 
+## 🗄️ Local Backend (JSON Server)
+
+This project uses a local JSON server to store and manage clothing items.
+
+Running the backend:
+
+```bash 
+json-server --watch db.json --id _id --port 3001
+```
+
+---
+
 ## ✨ Features  
 - Dynamic weather updates  
 - Day/night background changes  
-- Add new garments through a modal form  
+- Add new garments through a modal form 
+- Card delete functionality  
+- Delete confirmation modal  
+- Item preview modal with “Delete item” button  
+- Weather-filtered clothing sections  
+- Profile page with user wardrobe  
+- API integration for adding + removing items  
 
 ---
 
@@ -32,6 +50,8 @@ You can see and try the app here 👉 [Weather Wardrobe Live](https://monaabdelr
 - Fetching and filtering live API data  
 - Managing React state and effects  
 - Deploying with gh-pages  
+- json-server --watch db.json --id _id --port 3001
+- npm run dev
 
 ---
 

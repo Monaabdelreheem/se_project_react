@@ -95,6 +95,12 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "blue t shirt",
+      "imageUrl": "https://cdn.saksfifthavenue.com/is/image/saks/0400024217305_ELECTRICBLUE?wid=380&hei=506&qlt=70&resMode=sharp2&op_usm=1.2,1,6,0",
+      "weather": "warm",
+      "_id": 17
     }
   ]
 }

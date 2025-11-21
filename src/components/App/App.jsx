@@ -82,7 +82,6 @@ function App() {
   };
 
   const openConfirmationModal = (card) => {
-    console.log("openConfirmationModal called with card:", card);
     setCardToDelete(card);
     setActiveModal("confirm-delete");
     
@@ -149,18 +148,19 @@ function App() {
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   handleCardDelete={openConfirmationModal}
+                  onAddNew={handleAddClick}
                 />
               }
             />
           </Routes>
         </div>
-        <ModalWithForm
+        {/* <ModalWithForm
           title="New garment"
           buttonText="Add garment"
           isOpen={activeModal === "add-garment"}
           onSubmit={onAddItem}
           onClose={closeActiveModal}
-        ></ModalWithForm>
+        ></ModalWithForm> */}
         <AddItemModal
           isOpen={activeModal === "add-garment"}
           onAddItem={onAddItem}

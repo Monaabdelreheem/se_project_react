@@ -6,16 +6,19 @@ export default function ClothesSection({
   weatherData,
   handleCardClick,
   handleCardDelete,
+  onAddNew,
 }) {
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
         <p className="Text">Your items</p>
-        <button className="clothes-section__add-new-btn">+ Add new</button>
+        <button className="clothes-section__add-new-btn" 
+        onClick={onAddNew}
+        >
+          + Add new</button>
       </div>
       <ul className="clothes-section__list">
         {clothingItems
-          .filter((item) => item.weather === weatherData.type)
           .map((item) => (
             <ItemCard
               key={item._id}

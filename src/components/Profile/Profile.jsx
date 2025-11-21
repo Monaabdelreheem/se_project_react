@@ -7,6 +7,7 @@ export default function Profile({
   weatherData,
   handleCardClick,
   handleCardDelete,
+  onAddNew,
 }) {
   return (
     <section className="Profile">
@@ -16,6 +17,7 @@ export default function Profile({
         weatherData={weatherData}
         handleCardClick={handleCardClick}
         handleCardDelete={handleCardDelete}
+        onAddNew={onAddNew}
       />
     </section>
   );

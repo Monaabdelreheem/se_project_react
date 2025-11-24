@@ -30,6 +30,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cardToDelete, setCardToDelete] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
@@ -44,17 +45,20 @@ function App() {
   };
 
   const onAddItem = (data) => {
+    setIsLoading(true);
+
     const newCardData = {
       name: data.name,
       imageUrl: data.imageUrl,
       weather: data.weather,
     };
-    addItem(newCardData)
+    return addItem(newCardData)
       .then((data) => {
-        setClothingItems([data, ...clothingItems]);
-        setActiveModal("");
+        setClothingItems((items) => [data, ...items]);
       })
-      .catch(console.error);
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const onRemoveItem = () => {
@@ -65,7 +69,7 @@ function App() {
         setClothingItems((items) =>
           items.filter((item) => item._id !== cardToDelete._id)
         );
-        setActiveModal("");
+        closeActiveModal();
         setCardToDelete(null);
         setSelectedCard({});
       })
@@ -165,6 +169,7 @@ function App() {
           isOpen={activeModal === "add-garment"}
           onAddItem={onAddItem}
           onClose={closeActiveModal}
+          isLoading={isLoading}
         />
         <ItemModal
           activeModal={activeModal}

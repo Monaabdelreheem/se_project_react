@@ -101,6 +101,18 @@
       "imageUrl": "https://cdn.saksfifthavenue.com/is/image/saks/0400024217305_ELECTRICBLUE?wid=380&hei=506&qlt=70&resMode=sharp2&op_usm=1.2,1,6,0",
       "weather": "warm",
       "_id": 17
+    },
+    {
+      "name": "green shirt",
+      "imageUrl": "https://shop.ccs.com/cdn/shop/files/ccs-heavyweighttee-green.jpg?v=1699556083",
+      "weather": "warm",
+      "_id": 18
+    },
+    {
+      "name": "light green",
+      "imageUrl": "https://www.vizari.com/cdn/shop/files/11_293fac0c-6977-46a5-b32c-6c95cb5e72c3.jpg?v=1762457404",
+      "weather": "warm",
+      "_id": 20
     }
   ]
 }

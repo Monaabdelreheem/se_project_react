@@ -16,15 +16,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
-
-  background-color: #ffffff;
-  border-radius: 4px;
-  padding: 2px 12px;
+  
 }
 
 .card__name {
-  position: absolute;
-  top: 15px;
   margin: 0;
   padding: 2px 12px;
   font-size: 16px;
@@ -40,7 +35,6 @@
 }
 
 .card__like-button {
-  position: absolute;
   width: 18px;
   height: 15px;
   background-image: url("../../assets/State=Default.png");
@@ -53,6 +47,7 @@
 }
 
 .card__like-button_active {
-  background-image: url("../../assets/State=Active.png");
+  background-image: url("../../assets/State=Liked.png");
+
 }
 

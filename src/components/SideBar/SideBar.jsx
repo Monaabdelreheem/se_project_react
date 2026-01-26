@@ -33,3 +33,4 @@ export default function SideBar({ onEditProfile }) {
     </aside>
   );
 }
+

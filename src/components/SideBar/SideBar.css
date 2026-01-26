@@ -1,8 +1,14 @@
-.sidebar .SideBar__user-container {
+.sidebar {
+  margin-top: 47px;
+  width: 229px;
+  background: red;
+}
+
+.SideBar__user-container {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin: 47px 116px auto 0;
+  /* margin: 47px 116px auto 0; */
   padding: 0;
 }
 .SideBar__avatar {

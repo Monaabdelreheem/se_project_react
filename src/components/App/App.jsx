@@ -210,7 +210,7 @@ function App() {
 
     checkToken(token)
       .then((userData) => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.dat);
         setIsLoggedIn(true);
       })
       .catch((err) => {

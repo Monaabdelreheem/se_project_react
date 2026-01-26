@@ -1,4 +1,7 @@
 .Profile {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    padding-left: 40px;   /* ← space from left edge */
+  gap: 116px; 
 }
+

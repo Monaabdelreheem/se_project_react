@@ -13,7 +13,14 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
-import { getItems, addItem, removeItem } from "../../utils/api";
+import {
+  getItems,
+  addItem,
+  removeItem,
+  addCardLike,
+  removeCardLike,
+  updateUserProfile,
+} from "../../utils/api";
 import { register, authorize, checkToken } from "../../utils/auth";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
@@ -51,6 +58,20 @@ function App() {
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
+  };
+
+  const handleCardLike = ({ _id, likes }) => {
+    const isLiked = likes.some((id) => id === currentUser?._id);
+
+    const request = !isLiked ? addCardLike(_id) : removeCardLike(_id);
+
+    request
+      .then((updatedCard) => {
+        setClothingItems((items) =>
+          items.map((item) => (item._id === _id ? updatedCard : item)),
+        );
+      })
+      .catch(console.error);
   };
 
   const onAddItem = (data) => {
@@ -148,6 +169,20 @@ function App() {
     setActiveModal("confirm-delete");
   };
 
+  const handleUpdateUser = ({ name, avatar }) => {
+    setIsLoading(true);
+
+    updateUserProfile({ name, avatar })
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeActiveModal();
+      })
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
@@ -229,6 +264,7 @@ function App() {
                     clothingItems={clothingItems}
                     handleCardClick={handleCardClick}
                     handleCardDelete={openConfirmationModal}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -243,6 +279,7 @@ function App() {
                       handleCardDelete={openConfirmationModal}
                       onAddNew={handleAddClick}
                       onEditProfile={handleEditProfileClick}
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }
@@ -289,7 +326,7 @@ function App() {
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}
             onClose={closeActiveModal}
-            onUpdateUser={() => {}}
+            onUpdateUser={handleUpdateUser}
             isLoading={isLoading}
           />
 

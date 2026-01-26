@@ -9,6 +9,7 @@ export default function Profile({
   handleCardDelete,
   onAddNew,
   onEditProfile,
+  onCardLike,
 }) {
   return (
     <section className="Profile">
@@ -19,7 +20,8 @@ export default function Profile({
         handleCardClick={handleCardClick}
         handleCardDelete={handleCardDelete}
         onAddNew={onAddNew}
-      />
+        onCardLike={onCardLike}
+        />
     </section>
   );
 }

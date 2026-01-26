@@ -39,3 +39,48 @@ export const removeItem = (itemId) => {
     headers: { ...headers, authorization: `Bearer ${getToken()}` },
   });
 };
+
+export const addCardLike = (itemId) => {
+  return request(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: { ...headers, authorization: `Bearer ${getToken()}` },
+  });
+};
+
+export const removeCardLike = (itemId) => {
+  return request(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: { ...headers, authorization: `Bearer ${getToken()}` },
+  });
+};
+
+export const register = ({ name, avatar, email, password }) => {
+  return request(`${baseUrl}/signup`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ name, avatar, email, password }),
+  });
+};
+
+export const authorize = ({ email, password }) => {
+  return request(`${baseUrl}/signin`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ email, password }),
+  });
+};
+
+export const getContent = (token) => {
+  return request(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: { ...headers, authorization: `Bearer ${token}` },
+  });
+};
+
+export const updateUserProfile = ({ name, avatar }) => {
+  return request(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: { ...headers, authorization: `Bearer ${getToken()}` },
+    body: JSON.stringify({ name, avatar }),
+  });
+};  

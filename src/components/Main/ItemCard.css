@@ -7,6 +7,21 @@
   display: flex;
   justify-content: center;
 }
+
+.card__title-row {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 2px 12px;
+}
+
 .card__name {
   position: absolute;
   top: 15px;
@@ -23,3 +38,21 @@
 .card__image {
   width: 100%;
 }
+
+.card__like-button {
+  position: absolute;
+  width: 18px;
+  height: 15px;
+  background-image: url("../../assets/State=Default.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.card__like-button_active {
+  background-image: url("../../assets/State=Active.png");
+}
+

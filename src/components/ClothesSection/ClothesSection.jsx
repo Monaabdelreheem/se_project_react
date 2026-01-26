@@ -9,7 +9,9 @@ export default function ClothesSection({
   handleCardClick,
   handleCardDelete,
   onAddNew,
+  onCardLike,
 }) {
+
   const currentUser = useContext(CurrentUserContext);
   return (
     <div className="clothes-section">
@@ -28,6 +30,7 @@ export default function ClothesSection({
               item={item}
               onCardClick={handleCardClick}
               onCardDelete={handleCardDelete}
+              onCardLike={onCardLike}
             />
           ))}
       </ul>

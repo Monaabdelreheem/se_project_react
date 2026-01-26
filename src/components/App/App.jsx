@@ -142,6 +142,12 @@ function App() {
     setActiveModal("confirm-delete");
   };
 
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+  };
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -202,6 +208,7 @@ function App() {
             handleAddClick={handleAddClick}
             handleRegisterClick={handleRegisterClick}
             handleLoginClick={handleLoginClick}
+            handleSignOut={handleSignOut}
             isLoggedIn={isLoggedIn}
             currentUser={currentUser}
             weatherData={weatherData}

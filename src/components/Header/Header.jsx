@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { NavLink } from "react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
@@ -10,13 +12,14 @@ function Header({
   handleLoginClick,
   handleSignOut,
   isLoggedIn,
-  currentUser,
   weatherData,
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <header className="header">
@@ -58,11 +61,17 @@ function Header({
           <NavLink to="/profile" className="header__nav-link">
             <div className="header__user-container">
               <p className="header__username">{currentUser?.name}</p>
-              <img
-                src={currentUser?.avatar}
-                alt={currentUser?.name}
-                className="header__avatar"
-              />
+              {currentUser?.avatar ? (
+                <img
+                  src={currentUser.avatar}
+                  alt={currentUser.name}
+                  className="header__avatar"
+                />
+              ) : (
+                <div className="header__avatar-placeholder">
+                  {currentUser?.name?.charAt(0).toUpperCase()}
+                </div>
+              )}
             </div>
           </NavLink>
           <button

@@ -2,6 +2,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import "./App.css";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -195,6 +196,7 @@ function App() {
   }, [activeModal]);
 
   return (
+    <CurrentUserContext.Provider value={currentUser}>
     <CurrentTemperatureUnitContext.Provider
       value={{
         currentTemperatureUnit,
@@ -282,6 +284,7 @@ function App() {
         <Footer />
       </div>
     </CurrentTemperatureUnitContext.Provider>
+    </CurrentUserContext.Provider>
   );
 }
 

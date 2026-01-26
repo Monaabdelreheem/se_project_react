@@ -8,10 +8,11 @@ export default function Profile({
   handleCardClick,
   handleCardDelete,
   onAddNew,
+  onEditProfile,
 }) {
   return (
     <section className="Profile">
-      <SideBar />
+      <SideBar onEditProfile={onEditProfile} />
       <ClothesSection
         clothingItems={clothingItems}
         weatherData={weatherData}

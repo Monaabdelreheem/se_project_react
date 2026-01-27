@@ -1,7 +1,8 @@
 .Profile {
-    display: flex;
-    /* justify-content: space-between; */
-    padding-left: 40px;   /* ← space from left edge */
-  gap: 116px; 
+  display: flex;
+  gap: 120px;
+  padding: 40px 0 85px;
+  max-width: 1360px;
+  margin: 0 auto;
 }
 

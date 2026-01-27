@@ -13,6 +13,9 @@ export default function ClothesSection({
 }) {
 
   const currentUser = useContext(CurrentUserContext);
+  
+  const userItems = clothingItems.filter((item) => item.owner === currentUser?._id || item.owner?._id === currentUser?._id);
+  
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
@@ -22,9 +25,7 @@ export default function ClothesSection({
         </button>
       </div>
       <ul className="clothes-section__list">
-        {clothingItems
-          .filter((item) => item.owner === currentUser?._id)
-          .map((item) => (
+        {userItems.map((item) => (
             <ItemCard
               key={item._id}
               item={item}

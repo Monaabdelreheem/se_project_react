@@ -43,14 +43,14 @@ export const removeItem = (itemId) => {
 export const addCardLike = (itemId) => {
   return request(`${baseUrl}/items/${itemId}/likes`, {
     method: "PUT",
-    headers: { ...headers, authorization: `Bearer ${getToken()}` },
+    headers: { ...headers, Authorization: `Bearer ${getToken()}` },
   });
 };
 
 export const removeCardLike = (itemId) => {
   return request(`${baseUrl}/items/${itemId}/likes`, {
     method: "DELETE",
-    headers: { ...headers, authorization: `Bearer ${getToken()}` },
+    headers: { ...headers, Authorization: `Bearer ${getToken()}` },
   });
 };
 

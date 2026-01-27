@@ -11,6 +11,9 @@ You can see and try the app here 👉 [Weather Wardrobe Live](https://monaabdelr
 📦 You can also view the full project repository on GitHub:  
 [Weather Wardrobe Repository](https://github.com/Monaabdelreheem/se_project_react)
 
+🔗 Backend Repository:  
+[WTWR Backend API](https://github.com/Monaabdelreheem/se_project_express)
+
 ---
 
 ## ⚙️ Built With  
@@ -34,15 +37,20 @@ json-server --watch db.json --id _id --port 3001
 ---
 
 ## ✨ Features  
+- User authentication (register, login, logout)
+- JWT token-based authorization
+- Protected routes for authenticated users
 - Dynamic weather updates  
 - Day/night background changes  
 - Add new garments through a modal form 
-- Card delete functionality  
-- Delete confirmation modal  
-- Item preview modal with “Delete item” button  
+- Card delete functionality with confirmation modal
+- Like/unlike cards (persists between reloads)
+- Edit user profile (name and avatar)
+- Item preview modal with "Delete item" button  
 - Weather-filtered clothing sections  
-- Profile page with user wardrobe  
-- API integration for adding + removing items  
+- Profile page with user's personal wardrobe  
+- API integration with Express backend
+- Form validation with error handling
 
 ---
 

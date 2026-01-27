@@ -10,8 +10,7 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
   useModalClose(isOpen, onClose);
 
   const currentUser = useContext(CurrentUserContext);
-  const isOwn =
-  card?.owner === currentUser?._id;
+  const isOwn = card?.owner === currentUser?._id || card?.owner?._id === currentUser?._id;
   
   return (
     <div className="item-modal__wrapper">

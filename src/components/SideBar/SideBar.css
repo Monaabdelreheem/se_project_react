@@ -1,33 +1,66 @@
 .sidebar {
-  margin-top: 47px;
-  width: 229px;
-  background: red;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 200px;
 }
 
 .SideBar__user-container {
   display: flex;
   align-items: center;
   gap: 16px;
-  /* margin: 47px 116px auto 0; */
-  padding: 0;
+  margin-bottom: 8px;
 }
+
 .SideBar__avatar {
   width: 56px;
   height: 56px;
-  left: 1320px;
-  opacity: 1;
-  border-width: 1px;
-  margin: 0;
-  padding: 0;
   border-radius: 50%;
-  /* display: block; */
+  object-fit: cover;
 }
+
+.SideBar__avatar-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #d6d6d6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+
 .SideBar__username {
   margin: 0;
-  padding: 16px 0;
   font-size: 20px;
   font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
-  white-space: nowrap;
+  font-style: bold;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.SideBar__edit-btn,
+.SideBar__signout-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: bold;
+  cursor: pointer;
+  color: #000000;
+  transition: opacity 0.3s;
+}
+
+.SideBar__edit-btn:hover,
+.SideBar__signout-btn:hover {
+  opacity: 0.6;
+}
+
+.SideBar__signout-btn {
+  margin-top: 8px;
 }

@@ -43,25 +43,46 @@ function Header({
   <div className="header__right">
     <ToggleSwitch />
 
-    <button
-      type="button"
-      onClick={handleAddClick}
-      className="header__add-clothes-btn"
-    >
-      + Add clothes
-    </button>
+    {isLoggedIn ? (
+      <>
+        <button
+          type="button"
+          onClick={handleAddClick}
+          className="header__add-clothes-btn"
+        >
+          + Add clothes
+        </button>
 
-    <NavLink to="/profile" className="header__nav-link">
-      <div className="header__user-container">
-        <p className="header__username">{currentUser?.name}</p>
+        <NavLink to="/profile" className="header__nav-link">
+          <div className="header__user-container">
+            <p className="header__username">{currentUser?.name}</p>
 
-        <img
-          src={currentUser?.avatar || avatar}
-          alt={currentUser?.name || "User Avatar"}
-          className="header__avatar"
-        />
-      </div>
-    </NavLink>
+            <img
+              src={currentUser?.avatar || avatar}
+              alt={currentUser?.name}
+              className="header__avatar"
+            />
+          </div>
+        </NavLink>
+      </>
+    ) : (
+      <>
+        <button
+          type="button"
+          onClick={handleRegisterClick}
+          className="header__register-btn"
+        >
+          Sign Up
+        </button>
+        <button
+          type="button"
+          onClick={handleLoginClick}
+          className="header__login-btn"
+        >
+          Log In
+        </button>
+      </>
+    )}
   </div>
 </header>
 

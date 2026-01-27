@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import "./App.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { coordinates, APIkey } from "../../utils/constants";
+import { coordinates, APIkey, defaultClothingItems } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -27,8 +27,6 @@ import LoginModal from "../LoginModal/LoginModal";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
-// import { defaultClothingItems } from "../../utils/api";
-
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -47,6 +45,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cardToDelete, setCardToDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [authError, setAuthError] = useState("");
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
@@ -60,15 +59,13 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const handleCardLike = ({ _id, likes }) => {
-    const isLiked = likes.some((id) => id === currentUser?._id);
+  const handleCardLike = ({ id, isLiked }) => {
+    const likeAction = isLiked ? removeCardLike(id) : addCardLike(id);
 
-    const request = !isLiked ? addCardLike(_id) : removeCardLike(_id);
-
-    request
+    likeAction
       .then((updatedCard) => {
         setClothingItems((items) =>
-          items.map((item) => (item._id === _id ? updatedCard : item)),
+          items.map((item) => (item._id === id ? updatedCard : item)),
         );
       })
       .catch(console.error);
@@ -93,6 +90,7 @@ function App() {
   // register and login
   const handleRegister = ({ name, avatar, email, password }) => {
     setIsLoading(true);
+    setAuthError("");
 
     register({ name, avatar, email, password })
       .then(() => {
@@ -100,11 +98,16 @@ function App() {
       })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
+        return checkToken(res.token);
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
         setIsLoggedIn(true);
         closeActiveModal();
       })
       .catch((err) => {
         console.error("Registration error:", err);
+        setAuthError("Registration failed. Email may already be in use.");
       })
       .finally(() => {
         setIsLoading(false);
@@ -112,24 +115,32 @@ function App() {
   };
 
   const handleRegisterClick = () => {
+    setAuthError("");
     setActiveModal("register");
   };
 
   const handleLoginClick = () => {
+    setAuthError("");
     setActiveModal("login");
   };
 
   const handleLogin = ({ email, password }) => {
     setIsLoading(true);
+    setAuthError("");
 
     authorize({ email, password })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
+        return checkToken(res.token);
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
         setIsLoggedIn(true);
         closeActiveModal();
       })
       .catch((err) => {
         console.error("Login error:", err);
+        setAuthError("Incorrect email or password");
       })
       .finally(() => {
         setIsLoading(false);
@@ -196,11 +207,29 @@ function App() {
         setWeatherData(filterData);
       })
       .catch(console.error);
+    
     getItems()
       .then((data) => {
-        setClothingItems(data.reverse());
+
+        const itemsWithLikes = data.map(item => ({
+          ...item,
+          imageUrl: (item.imageUrl || item.link)?.trim(),
+          likes: item.likes || []
+        }));
+        setClothingItems(itemsWithLikes.reverse());
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error("Failed to fetch items:", err);
+        // Use default items as fallback
+        const defaultItems = defaultClothingItems.map(item => ({
+          ...item,
+          imageUrl: item.link,
+          likes: [],
+          owner: null,
+          _id: item._id.toString()
+        }));
+        setClothingItems(defaultItems);
+      });
   }, []);
 
   useEffect(() => {
@@ -210,7 +239,7 @@ function App() {
 
     checkToken(token)
       .then((userData) => {
-        setCurrentUser(userData.dat);
+        setCurrentUser(userData);
         setIsLoggedIn(true);
       })
       .catch((err) => {
@@ -280,6 +309,7 @@ function App() {
                       onAddNew={handleAddClick}
                       onEditProfile={handleEditProfileClick}
                       onCardLike={handleCardLike}
+                      onSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
                 }
@@ -315,6 +345,8 @@ function App() {
             onClose={closeActiveModal}
             onRegister={handleRegister}
             isLoading={isLoading}
+            onSwitchToLogin={handleLoginClick}
+            error={authError}
           />
 
           <LoginModal
@@ -322,6 +354,8 @@ function App() {
             onClose={closeActiveModal}
             onLogin={handleLogin}
             isLoading={isLoading}
+            onSwitchToRegister={handleRegisterClick}
+            error={authError}
           />
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}

@@ -12,6 +12,9 @@ function Main({
   onCardLike,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  
+  const filteredItems = clothingItems.filter((item) => item.weather === weatherData.type);
+  
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
@@ -21,9 +24,7 @@ function Main({
           {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="cards__list">
-          {clothingItems
-            .filter((item) => item.weather === weatherData.type)
-            .map((item) => (
+          {filteredItems.map((item) => (
               <ItemCard
                 key={item._id}
                 item={item}

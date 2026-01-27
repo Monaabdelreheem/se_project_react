@@ -29,57 +29,76 @@
 .modal__title {
     margin: 0;
     margin-bottom: 24px;
-
+  font-size: 16px;
+  font-weight: 700;
+  font-style: bold;
+  line-height: 20px;
+  color: #000000;
 }
 
 .modal__close {
-    position: absolute;
-    top: 20px;
-    right: 28px;
-    border: none;
-    background-color: #FFFFFF;
-    color: #0000004D;
-    
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  border: none;
+  background-color: #FFFFFF;
+  color: #0000004D;
+  
 }
 
 .modal__form {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  
 }
 
 .modal__label {
-    width: 100%;  
+  width: 100%;
+  font-size: 16px;
+  font-weight: 700;
+  font-style: bold;
+  line-height: 20px;
+  color: #000000;
+    margin-top: 24px;
 }
 
 .modal__field {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-.modal__input {
-    display: block;
-    margin-top: 8px;
-    width: 100%;
-    border: none;
-    color: #00000080;
-    border-bottom: 1px solid #000000;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
+.modal__input {
+  display: block;
+  margin-top: 8px;
+  width: 100%;
+  border: none;
+  color: #000000;
+  border-bottom: 1px solid #000000;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  padding-bottom: 8px;
+}
+
+.modal__input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 400;
+}
 
 .modal__radio-buttons {
-    border: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    color: #00000080;
-    font-size: 16px;
-    line-height: 20px;
-    letter-spacing: 0;
-    font-weight: 700;
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #00000080;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  font-weight: 700;
 }
 
 .modal__legend {
@@ -97,12 +116,49 @@
     border-radius: 4px;
     border: none;
     padding: 8px 16px;
-    display: block;
+    display: inline-block;
     margin-top: 32px;
-    margin-right: auto;
-
+    margin-right: 0;
+  cursor: pointer;
 }
 
-.modal__label:has(.modal__radio_input:checked) {
-  color: #000000;
+.modal__submit_disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: not-allowed;
+}
+
+.modal__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+
+.modal__or-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  padding: 0;
+  margin-top: 32px;
+  transition: opacity 0.3s;
+}
+
+.modal__or-button:hover {
+  opacity: 0.6;
+}
+
+.modal__input_error {
+  border-bottom-color: #FF4D00;
+}
+
+.modal__error {
+  display: block;
+  color: #FF4D00;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  margin-top: 4px;
 }

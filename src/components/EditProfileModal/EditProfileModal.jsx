@@ -9,30 +9,37 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, isLoading }) {
   const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
-    if (!currentUser) return;
-
-    setName(currentUser.name || "");
-    setAvatar(currentUser.avatar || "");
-  }, [currentUser, isOpen]);
+    if (!isOpen) {
+      setName("");
+      setAvatar("");
+    }
+  }, [isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onUpdateUser({ name, avatar });
   };
 
+  const handleClose = () => {
+    setName("");
+    setAvatar("");
+    onClose();
+  };
+
   return (
     <ModalWithForm
       title="Edit profile"
-      buttonText={isLoading ? "Saving..." : "Save"}
+      buttonText={isLoading ? "Saving..." : "Save changes"}
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={handleClose}
       onSubmit={handleSubmit}
     >
       <label className="modal__label">
-        Name
+        Name*
         <input
           type="text"
           className="modal__input"
+          placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -44,6 +51,7 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, isLoading }) {
         <input
           type="url"
           className="modal__input"
+          placeholder="Avatar URL"
           value={avatar}
           onChange={(e) => setAvatar(e.target.value)}
           required

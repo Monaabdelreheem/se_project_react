@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
@@ -7,13 +7,6 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, isLoading }) {
 
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
-
-  useEffect(() => {
-    if (!isOpen) {
-      setName("");
-      setAvatar("");
-    }
-  }, [isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +47,7 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, isLoading }) {
           placeholder="Avatar URL"
           value={avatar}
           onChange={(e) => setAvatar(e.target.value)}
-          required
+          onFocus={() => console.log("Avatar input value:", avatar)}
         />
       </label>
     </ModalWithForm>

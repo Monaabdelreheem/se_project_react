@@ -1,26 +1,3 @@
-// import "./DeleteConfirmationModal.css";
-
-// function DeleteConfirmationModal({ isOpen, onClose, onConfirm }) {
-//   if (!isOpen) return null;
-
-//   return (
-//     <div className="modal">
-//       <div className="modal__content">
-//         <button className="modal__close" onClick={onClose}>X</button>
-//         <h3 className="modal__title">Are you sure?</h3>
-//         <p className="modal__text">
-//           Do you really want to delete this item?
-//         </p>
-//         <div className="modal__buttons">
-//           <button onClick={onClose}>Cancel</button>
-//           <button onClick={onConfirm}>Yes, delete</button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-// export default DeleteConfirmationModal;
-
 import "./DeleteConfirmationModal.css";
 
 function DeleteConfirmationModal({ isOpen, onClose, onConfirm }) {

@@ -1,9 +1,9 @@
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import "./App.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { coordinates, APIkey, defaultClothingItems } from "../../utils/constants";
+import { coordinates, apiKey, defaultClothingItems } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -28,6 +28,8 @@ import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmati
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 function App() {
+  const navigate = useNavigate();
+  
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
@@ -104,6 +106,7 @@ function App() {
         setCurrentUser(userData);
         setIsLoggedIn(true);
         closeActiveModal();
+        navigate("/");
       })
       .catch((err) => {
         console.error("Registration error:", err);
@@ -137,6 +140,7 @@ function App() {
         setCurrentUser(userData);
         setIsLoggedIn(true);
         closeActiveModal();
+        navigate("/");
       })
       .catch((err) => {
         console.error("Login error:", err);
@@ -201,7 +205,7 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, APIkey)
+    getWeather(coordinates, apiKey)
       .then((data) => {
         const filterData = filterWeatherData(data);
         setWeatherData(filterData);
@@ -316,13 +320,6 @@ function App() {
               />
             </Routes>
           </div>
-          {/* <ModalWithForm
-          title="New garment"
-          buttonText="Add garment"
-          isOpen={activeModal === "add-garment"}
-          onSubmit={onAddItem}
-          onClose={closeActiveModal}
-        ></ModalWithForm> */}
           <AddItemModal
             isOpen={activeModal === "add-garment"}
             onAddItem={onAddItem}

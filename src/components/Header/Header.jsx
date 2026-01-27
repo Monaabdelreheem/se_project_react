@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import avatar from "../../assets/avatar.png";
 
 function Header({
   handleAddClick,
@@ -57,11 +56,17 @@ function Header({
           <div className="header__user-container">
             <p className="header__username">{currentUser?.name}</p>
 
-            <img
-              src={currentUser?.avatar || avatar}
-              alt={currentUser?.name}
-              className="header__avatar"
-            />
+            {currentUser?.avatar ? (
+              <img
+                src={currentUser.avatar}
+                alt={currentUser.name}
+                className="header__avatar"
+              />
+            ) : (
+              <div className="header__avatar-placeholder">
+                {currentUser?.name?.[0]}
+              </div>
+            )}
           </div>
         </NavLink>
       </>

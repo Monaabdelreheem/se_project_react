@@ -26,10 +26,3 @@ export default function Profile({
     </section>
   );
 }
-// export default function Profile() {
-//   return (
-//     <section style={{ background: "yellow", height: "500px" }}>
-//       PROFILE PAGE IS RENDERING
-//     </section>
-//   );
-// }

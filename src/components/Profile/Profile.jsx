@@ -17,7 +17,6 @@ export default function Profile({
       <SideBar onEditProfile={onEditProfile} onSignOut={onSignOut} />
       <ClothesSection
         clothingItems={clothingItems}
-        weatherData={weatherData}
         handleCardClick={handleCardClick}
         handleCardDelete={handleCardDelete}
         onAddNew={onAddNew}

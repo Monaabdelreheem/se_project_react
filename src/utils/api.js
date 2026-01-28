@@ -27,7 +27,7 @@ export const getItems = () => {
 export const addItem = ({ name, imageUrl, weather}) => {
   return request(`${baseUrl}/items`, {
     method: "POST",
-    headers: { ...headers, authorization: `Bearer ${getToken()}` },
+    headers: { ...headers, Authorization: `Bearer ${getToken()}` },
     body: JSON.stringify({ name, imageUrl, weather }),
   });
 };
@@ -36,21 +36,21 @@ export const addItem = ({ name, imageUrl, weather}) => {
 export const removeItem = (itemId) => {
   return request(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
-    headers: { ...headers, authorization: `Bearer ${getToken()}` },
+    headers: { ...headers, Authorization: `Bearer ${getToken()}` },
   });
 };
 
 export const addCardLike = (itemId) => {
   return request(`${baseUrl}/items/${itemId}/likes`, {
     method: "PUT",
-    headers: { ...headers, Authorization: `Bearer ${getToken()}` },
+    headers: { ...headers, authorization: `Bearer ${getToken()}` },
   });
 };
 
 export const removeCardLike = (itemId) => {
   return request(`${baseUrl}/items/${itemId}/likes`, {
     method: "DELETE",
-    headers: { ...headers, Authorization: `Bearer ${getToken()}` },
+    headers: { ...headers, authorization: `Bearer ${getToken()}` },
   });
 };
 
@@ -73,14 +73,14 @@ export const authorize = ({ email, password }) => {
 export const getContent = (token) => {
   return request(`${baseUrl}/users/me`, {
     method: "GET",
-    headers: { ...headers, authorization: `Bearer ${token}` },
+    headers: { ...headers, Authorization: `Bearer ${token}` },
   });
 };
 
 export const updateUserProfile = ({ name, avatar }) => {
   return request(`${baseUrl}/users/me`, {
     method: "PATCH",
-    headers: { ...headers, authorization: `Bearer ${getToken()}` },
+    headers: { ...headers, Authorization: `Bearer ${getToken()}` },
     body: JSON.stringify({ name, avatar }),
   });
 };  

@@ -5,7 +5,6 @@ import ItemCard from "../Main/ItemCard";
 
 export default function ClothesSection({
   clothingItems,
-  weatherData,
   handleCardClick,
   handleCardDelete,
   onAddNew,

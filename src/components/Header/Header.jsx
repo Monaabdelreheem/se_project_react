@@ -19,7 +19,6 @@ function Header({
   });
 
   const currentUser = useContext(CurrentUserContext);
-  // if (!currentUser) return null;
 
   return (
     <header className="header">

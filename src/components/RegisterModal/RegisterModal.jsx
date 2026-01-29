@@ -1,41 +1,35 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useForm } from "../../hooks/useForm";
 
 function RegisterModal({ isOpen, onClose, onRegister, isLoading, onSwitchToLogin, error }) {
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const defaultValues = {
+    name: "",
+    avatar: "",
+    email: "",
+    password: "",
+  };
+
+  const { values, handleChange, resetForm } = useForm(defaultValues);
 
   useEffect(() => {
     if (!isOpen) {
-      setName("");
-      setAvatar("");
-      setEmail("");
-      setPassword("");
+      resetForm();
     }
-  }, [isOpen]);
+  }, [isOpen, resetForm]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onRegister({
-      name,
-      avatar,
-      email,
-      password,
-    });
+    onRegister(values);
   };
 
   const handleClose = () => {
-    setName("");
-    setAvatar("");
-    setEmail("");
-    setPassword("");
+    resetForm();
     onClose();
   };
 
-  const isFormValid = email.trim() !== "" && password.trim() !== "" && name.trim() !== "";
+  const isFormValid = values.email.trim() !== "" && values.password.trim() !== "" && values.name.trim() !== "";
 
   return (
     <ModalWithForm
@@ -60,9 +54,11 @@ function RegisterModal({ isOpen, onClose, onRegister, isLoading, onSwitchToLogin
         <input
           type="email"
           className="modal__input"
+          id="email"
+          name="email"
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={values.email}
+          onChange={handleChange}
           required
         />
       </label>
@@ -72,9 +68,11 @@ function RegisterModal({ isOpen, onClose, onRegister, isLoading, onSwitchToLogin
         <input
           type="password"
           className={`modal__input ${error ? "modal__input_error" : ""}`}
+          id="password"
+          name="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={values.password}
+          onChange={handleChange}
           required
         />
         {error && <span className="modal__error">{error}</span>}
@@ -85,9 +83,11 @@ function RegisterModal({ isOpen, onClose, onRegister, isLoading, onSwitchToLogin
         <input
           type="text"
           className="modal__input"
+          id="name"
+          name="name"
           placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={values.name}
+          onChange={handleChange}
           required
         />
       </label>
@@ -97,9 +97,11 @@ function RegisterModal({ isOpen, onClose, onRegister, isLoading, onSwitchToLogin
         <input
           type="url"
           className="modal__input"
+          id="avatar"
+          name="avatar"
           placeholder="Avatar URL"
-          value={avatar}
-          onChange={(e) => setAvatar(e.target.value)}
+          value={values.avatar}
+          onChange={handleChange}
           required
         />
       </label>

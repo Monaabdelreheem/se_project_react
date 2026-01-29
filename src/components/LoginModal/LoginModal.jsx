@@ -1,33 +1,33 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useForm } from "../../hooks/useForm";
 
 function LoginModal({ isOpen, onClose, onLogin, isLoading, onSwitchToRegister, error }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const defaultValues = {
+    email: "",
+    password: "",
+  };
+
+  const { values, handleChange, resetForm } = useForm(defaultValues);
 
   useEffect(() => {
     if (!isOpen) {
-      setEmail("");
-      setPassword("");
+      resetForm();
     }
-  }, [isOpen]);
+  }, [isOpen, resetForm]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onLogin({
-      email,
-      password,
-    });
+    onLogin(values);
   };
 
   const handleClose = () => {
-    setEmail("");
-    setPassword("");
+    resetForm();
     onClose();
   };
 
-  const isFormValid = email.trim() !== "" && password.trim() !== "";
+  const isFormValid = values.email.trim() !== "" && values.password.trim() !== "";
 
   return (
     <ModalWithForm
@@ -52,9 +52,11 @@ function LoginModal({ isOpen, onClose, onLogin, isLoading, onSwitchToRegister, e
         <input
           type="email"
           className="modal__input"
+          id="email"
+          name="email"
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={values.email}
+          onChange={handleChange}
           required
         />
       </label>
@@ -64,9 +66,11 @@ function LoginModal({ isOpen, onClose, onLogin, isLoading, onSwitchToRegister, e
         <input
           type="password"
           className={`modal__input ${error ? "modal__input_error" : ""}`}
+          id="password"
+          name="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={values.password}
+          onChange={handleChange}
           required
         />
         {error && <span className="modal__error">{error}</span>}

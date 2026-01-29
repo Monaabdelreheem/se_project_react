@@ -1,21 +1,34 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useForm } from "../../hooks/useForm";
 
 function EditProfileModal({ isOpen, onClose, onUpdateUser, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const defaultValues = {
+    name: "",
+    avatar: "",
+  };
+
+  const { values, handleChange, resetForm, setValues } = useForm(defaultValues);
+
+  useEffect(() => {
+    if (isOpen && currentUser) {
+      setValues({
+        name: currentUser.name || "",
+        avatar: currentUser.avatar || "",
+      });
+    }
+  }, [isOpen, currentUser, setValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateUser({ name, avatar });
+    onUpdateUser(values);
   };
 
   const handleClose = () => {
-    setName("");
-    setAvatar("");
+    resetForm();
     onClose();
   };
 
@@ -32,9 +45,11 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, isLoading }) {
         <input
           type="text"
           className="modal__input"
+          id="name"
+          name="name"
           placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={values.name}
+          onChange={handleChange}
           required
         />
       </label>
@@ -44,10 +59,11 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, isLoading }) {
         <input
           type="url"
           className="modal__input"
+          id="avatar"
+          name="avatar"
           placeholder="Avatar URL"
-          value={avatar}
-          onChange={(e) => setAvatar(e.target.value)}
-          onFocus={() => console.log("Avatar input value:", avatar)}
+          value={values.avatar}
+          onChange={handleChange}
         />
       </label>
     </ModalWithForm>

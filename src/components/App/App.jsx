@@ -85,6 +85,9 @@ function App() {
       .then((data) => {
         setClothingItems((items) => [data, ...items]);
       })
+      .catch((err) => {
+        console.error("Failed to add item:", err);
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -285,7 +288,6 @@ function App() {
               handleLoginClick={handleLoginClick}
               handleSignOut={handleSignOut}
               isLoggedIn={isLoggedIn}
-              currentUser={currentUser}
               weatherData={weatherData}
             />
             <Routes>

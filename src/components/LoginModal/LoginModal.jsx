@@ -14,7 +14,7 @@ function LoginModal({ isOpen, onClose, onLogin, isLoading, onSwitchToRegister, e
     if (!isOpen) {
       resetForm();
     }
-  }, [isOpen, resetForm]);
+  }, [isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

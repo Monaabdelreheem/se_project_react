@@ -227,15 +227,6 @@ function App() {
       })
       .catch((err) => {
         console.error("Failed to fetch items:", err);
-        // Use default items as fallback
-        const defaultItems = defaultClothingItems.map(item => ({
-          ...item,
-          imageUrl: item.link,
-          likes: [],
-          owner: null,
-          _id: item._id.toString()
-        }));
-        setClothingItems(defaultItems);
       });
   }, []);
 

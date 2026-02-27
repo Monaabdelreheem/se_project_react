@@ -1,18 +1,21 @@
-# 👕 Weather Wardrobe React App
 
-A simple React app that suggests what to wear based on the current weather.  
-It uses real-time data from the OpenWeather API and changes visuals for day and night. 🌤️🌙  
+# WTWR (What to Wear React)
+
+**Live Website:**  
+https://mona-wtwr.artitech.com/
+
+**Backend API:**  
+https://api.mona-wtwr.artitech.com/
 
 ---
 
-### 🌐 Live Demo  
-You can see and try the app here 👉 [Weather Wardrobe Live](https://monaabdelreheem.github.io/se_project_react/)  
+## Deployment
 
-📦 You can also view the full project repository on GitHub:  
-[Weather Wardrobe Repository](https://github.com/Monaabdelreheem/se_project_react)
-
-🔗 Backend Repository:  
-[WTWR Backend API](https://github.com/Monaabdelreheem/se_project_express)
+- Frontend: https://mona-wtwr.artitech.com/
+- Frontend (www): https://www.mona-wtwr.artitech.com/
+- Backend API: https://api.mona-wtwr.artitech.com/
+- Frontend repo: https://github.com/Monaabdelreheem/se_project_react
+- Backend repo: https://github.com/Monaabdelreheem/se_project_express
 
 ---
 

@@ -16,8 +16,14 @@ https://api.mona-wtwr.artitech.com/
 - Backend API: https://api.mona-wtwr.artitech.com/
 - Frontend repo: https://github.com/Monaabdelreheem/se_project_react
 - Backend repo: https://github.com/Monaabdelreheem/se_project_express
+- Project pitch video: https://drive.google.com/file/d/1X0Jr1Tb7wt5OXSugp5YywhJzyz6p2m4d/view?usp=drive_link
 
 ---
+
+## Project Pitch Video
+Check out [this video](https://drive.google.com/file/d/1X0Jr1Tb7wt5OXSugp5YywhJzyz6p2m4d/view?usp=drive_link)
+
+
 
 ## ⚙️ Built With  
 - React + Vite  
